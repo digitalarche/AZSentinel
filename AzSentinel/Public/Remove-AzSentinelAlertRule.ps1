@@ -7,7 +7,7 @@ using module Az.Accounts
 function Remove-AzSentinelAlertRule {
     <#
     .SYNOPSIS
-    Manage Azure Sentinal Alert Rules
+    Remove Azure Sentinal Alert Rules
     .DESCRIPTION
     With this function you can remove Azure Sentinal Alert rules from Powershell, if you don't provide andy Rule name all rules will be removed
     .PARAMETER SubscriptionId
@@ -25,8 +25,6 @@ function Remove-AzSentinelAlertRule {
     .EXAMPLE
     Remove-AzSentinelAlertRule -WorkspaceName ""
     In this example no rule is specified, all rules will be removed one by one. For each rule you need to confirm the action
-    .EXAMPLE
-        Remove-AzSentinelAlertRule -WorkspaceName "" -SubscriptionId ""
     #>
 
     [cmdletbinding(SupportsShouldProcess, ConfirmImpact = 'High')]
@@ -69,9 +67,9 @@ function Remove-AzSentinelAlertRule {
         if ($RuleName) {
             # remove defined rules
             foreach ($rule in $RuleName) {
-                $item = Get-AzSentinelAlertRule @arguments -RuleName $rule
+                $item = Get-AzSentinelHuntingRule @arguments -RuleName $rule -WarningAction SilentlyContinue
                 if ($item) {
-                    $uri = "$script:baseUri/providers/Microsoft.SecurityInsights/alertRules/$($item.name)?api-version=2019-01-01-preview"
+                    $uri = "$script:baseUri/savedSearches/$($item.name)?api-version=2017-04-26-preview"
 
                     if ($PSCmdlet.ShouldProcess("Do you want to remove: $rule")) {
                         Write-Output $item
@@ -89,8 +87,8 @@ function Remove-AzSentinelAlertRule {
         }
         else {
             Write-Warning "No Rule selected, All rules will be removed one by one!"
-            Get-AzSentinelAlertRule @arguments | ForEach-Object {
-                $uri = "$script:baseUri/providers/Microsoft.SecurityInsights/alertRules/$($_.name)?api-version=2019-01-01-preview"
+            Get-AzSentinelHuntingRule @arguments | ForEach-Object {
+                $uri = "$script:baseUri/savedSearches/$($_.name)?api-version=2017-04-26-preview"
                 if ($PSCmdlet.ShouldProcess("Do you want to remove: $($_.displayName)")) {
                     $result = Invoke-WebRequest -Uri $uri -Method DELETE -Headers $script:authHeader
                     Write-Output "Successfully removed rule: $($_.displayName) with status: $($result.StatusDescription)"

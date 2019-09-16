@@ -5,25 +5,25 @@
 function Import-AzSentinelAlertRule {
     <#
     .SYNOPSIS
-        Manage Azure Sentinal Alert Rules
+    Import Azure Sentinal Alert rule
     .DESCRIPTION
-        This function imports Azure Sentinal Alert rules from JSON and YAML config files.
-        This way you can manage your Alert rules dynamic from JSON or multiple YAML files
+    This function imports Azure Sentinal Alert rules from JSON and YAML config files.
+    This way you can manage your Alert rules dynamic from JSON or multiple YAML files
     .PARAMETER SubscriptionId
     Enter the subscription ID, if no subscription ID is provided then current AZContext subscription will be used
     .PARAMETER WorkspaceName
-        Enter the Workspace name
+    Enter the Workspace name
     .PARAMETER SettingsFile
-        Path to the JSON or YAML file for the AlertRules
+    Path to the JSON or YAML file for the AlertRules
     .EXAMPLE
-        Import-AzSentinelAlertRule -WorkspaceName "" -SettingsFile ".\examples\AlertRules.json"
-        In this example all the rules configured in the JSON file will be created or updated
+    Import-AzSentinelAlertRule -WorkspaceName "" -SettingsFile ".\examples\AlertRules.json"
+    In this example all the rules configured in the JSON file will be created or updated
     .EXAMPLE
-        Import-AzSentinelAlertRule -WorkspaceName "" -SettingsFile ".\examples\SuspectApplicationConsent.yaml"
-        In this example all the rules configured in the YAML file will be created or updated
+    Import-AzSentinelAlertRule -WorkspaceName "" -SettingsFile ".\examples\SuspectApplicationConsent.yaml"
+    In this example all the rules configured in the YAML file will be created or updated
     .EXAMPLE
-        Get-Item .\examples\*.json | Import-AzSentinelAlertRule -WorkspaceName ""
-        In this example you can select multiple JSON files and Pipeline it to the SettingsFile parameter
+    Get-Item .\examples\*.json | Import-AzSentinelAlertRule -WorkspaceName ""
+    In this example you can select multiple JSON files and Pipeline it to the SettingsFile parameter
     #>
 
     [CmdletBinding(SupportsShouldProcess, ConfirmImpact = 'High')]

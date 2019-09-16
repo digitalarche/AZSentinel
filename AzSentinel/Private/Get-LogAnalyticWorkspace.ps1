@@ -11,7 +11,7 @@ function Get-LogAnalyticWorkspace {
     .PARAMETER FullObject
     If you want to return the full object data
     .EXAMPLE
-    Get-LogAnalyticWorkspace -WorkspaceName "pkm02"
+    Get-LogAnalyticWorkspace -WorkspaceName ""
     This example will get the Workspace and set workspace and baseuri param on Script scope level
     .EXAMPLE
     Get-LogAnalyticWorkspace -WorkspaceName "" -FullObject
