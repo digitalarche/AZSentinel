@@ -7,7 +7,7 @@ using module Az.Accounts
 function Get-AzSentinelHuntingRule {
     <#
     .SYNOPSIS
-    Get Azure Sentinal Hunting rule
+    Get Azure Sentinel Hunting rule
     .DESCRIPTION
     With this function you can get the configuration of the Azure Sentinel Hunting rule from Azure Sentinel
     .PARAMETER SubscriptionId
@@ -17,10 +17,11 @@ function Get-AzSentinelHuntingRule {
     .PARAMETER RuleName
     Enter the name of the Hunting rule name
     .EXAMPLE
-    Get-AzSentinelHuntingRule -WorkspaceName "pkm02" -RuleName "Windows Firewall Policy settings have changed" | fl
-
-    Get-AzSentinelHuntingRule -WorkspaceName "pkm03" -RuleName "testpkm01"
-    In this example you can get configuration of multiple alert rules in once
+    Get-AzSentinelHuntingRule -WorkspaceName "" -RuleName "",""
+    In this example you can get configuration of multiple Huntinh rules
+    .EXAMPLE
+    Get-AzSentinelHuntingRule -WorkspaceName ""
+    In this example you can get configuration of all the Hunting rules in once
     #>
 
     [cmdletbinding(SupportsShouldProcess)]

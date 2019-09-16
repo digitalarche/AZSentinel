@@ -5,29 +5,36 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzSentinelAlertRule
+# Get-AzSentinelHuntingRule
 
 ## SYNOPSIS
-Get Azure Sentinel Alert Rules
+Get Azure Sentinel Hunting rule
 
 ## SYNTAX
 
 ```
-Get-AzSentinelAlertRule [-SubscriptionId <String>] -WorkspaceName <String> [-RuleName <String[]>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Get-AzSentinelHuntingRule [-SubscriptionId <String>] -WorkspaceName <String> [-RuleName <String[]>]
+ [-Filter <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-With this function you can get the configuration of the Azure Sentinel Alert rule from Azure Sentinel
+With this function you can get the configuration of the Azure Sentinel Hunting rule from Azure Sentinel
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Get-AzSentinelAlertRule -WorkspaceName "" -RuleName "",""
+Get-AzSentinelHuntingRule -WorkspaceName "" -RuleName "",""
 ```
 
-In this example you can get configuration of multiple alert rules in once
+In this example you can get configuration of multiple Huntinh rules
+
+### EXAMPLE 2
+```
+Get-AzSentinelHuntingRule -WorkspaceName ""
+```
+
+In this example you can get configuration of all the Hunting rules in once
 
 ## PARAMETERS
 
@@ -62,7 +69,7 @@ Accept wildcard characters: False
 ```
 
 ### -RuleName
-Enter the name of the Alert rule
+Enter the name of the Hunting rule name
 
 ```yaml
 Type: String[]
@@ -73,6 +80,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Filter
+{{ Fill Filter Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

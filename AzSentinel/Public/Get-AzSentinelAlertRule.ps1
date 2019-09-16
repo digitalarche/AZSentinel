@@ -7,7 +7,7 @@ using module Az.Accounts
 function Get-AzSentinelAlertRule {
     <#
     .SYNOPSIS
-    Manage Azure Sentinal Alert Rules
+    Get Azure Sentinel Alert Rules
     .DESCRIPTION
     With this function you can get the configuration of the Azure Sentinel Alert rule from Azure Sentinel
     .PARAMETER SubscriptionId
